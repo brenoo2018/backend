@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { uuid } from 'uuidv4';
+import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
 import knex from '../database/connection';
 
@@ -22,9 +22,12 @@ export async function create(request: Request, response: Response) {
 
     delete checkUsersExists.password;
 
-    //usuário autenticado
+    const token = sign({}, '8346c2c23b70ba17f6c03c8697427a99', {
+      subject: checkUsersExists.uuid,
+      expiresIn: '1d',
+    }); //desafiotodolist2T
 
-    return response.json(checkUsersExists);
+    return response.json({ checkUsersExists, token });
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }

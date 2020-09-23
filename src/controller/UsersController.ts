@@ -9,7 +9,6 @@ export async function create(request: Request, response: Response) {
     const { username, email, password } = request.body;
 
     const checkUsersExists = await knex('users').where({ email }).first();
-    console.log(checkUsersExists);
 
     if (checkUsersExists) {
       return response.json({ message: 'User already exists' });
