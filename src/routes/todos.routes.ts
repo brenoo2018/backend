@@ -9,6 +9,6 @@ todosRouter.use(ensureAuthenticated);
 
 todosRouter.post('/create', TodosController.create);
 todosRouter.get('/', TodosController.index);
-todosRouter.delete('/delete', TodosController.destroy);
+todosRouter.delete('/delete/:uuid', TodosController.destroy);
 
 export default todosRouter;
