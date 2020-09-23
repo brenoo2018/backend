@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcryptjs';
+import authConfig from '../config/auth';
+
 import knex from '../database/connection';
 
 export async function create(request: Request, response: Response) {
@@ -22,10 +24,12 @@ export async function create(request: Request, response: Response) {
 
     delete checkUsersExists.password;
 
-    const token = sign({}, '8346c2c23b70ba17f6c03c8697427a99', {
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
       subject: checkUsersExists.uuid,
-      expiresIn: '1d',
-    }); //desafiotodolist2T
+      expiresIn,
+    });
 
     return response.json({ checkUsersExists, token });
   } catch (error) {

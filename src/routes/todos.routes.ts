@@ -1,13 +1,14 @@
 import { Router } from 'express';
 
+import * as TodosController from '../controller/TodosController';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const todosRouter = Router();
 
-todosRouter.get('/list', async (request, response) => {
-  try {
-    return response.send('fooooiii todos');
-  } catch (error) {
-    return response.status(400).json({ error: error.message });
-  }
-});
+todosRouter.use(ensureAuthenticated);
+
+todosRouter.post('/create', TodosController.create);
+todosRouter.get('/', TodosController.index);
+todosRouter.delete('/delete', TodosController.destroy);
 
 export default todosRouter;
