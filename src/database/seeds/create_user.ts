@@ -7,8 +7,8 @@ export async function seed(knex: Knex) {
   await knex('users').insert([
     {
       uuid: uuid(),
-      username: 't.breno2',
-      email: 'thaynanbreno2@gmail.com',
+      username: 'usuarioteste',
+      email: 'usuarioteste@gmail.com',
       password: hashedPassword,
     },
   ]);
