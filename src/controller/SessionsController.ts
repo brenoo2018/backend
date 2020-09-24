@@ -31,7 +31,7 @@ export async function create(request: Request, response: Response) {
       expiresIn,
     });
 
-    return response.json({ checkUsersExists, token });
+    return response.json({ user: checkUsersExists, token });
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }

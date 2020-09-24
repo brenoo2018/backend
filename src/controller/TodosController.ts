@@ -29,7 +29,13 @@ export async function create(request: Request, response: Response) {
       user_uuid: user.uuid,
     });
 
-    return response.json({ message: 'Success' });
+    const todos = await knex('todos')
+      .select(['uuid', 'task', 'user_uuid', 'created_at'])
+      .where({ user_uuid: user_uuid })
+      .orderBy('created_at', 'desc');
+
+
+    return response.json(todos);
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }
@@ -52,7 +58,9 @@ export async function index(request: Request, response: Response) {
       return response.json({ message: 'User does not exists' });
     }
 
-    const todos = await knex('todos').where({ user_uuid: user_uuid });
+    const todos = await knex('todos')
+      .where({ user_uuid: user_uuid })
+      .orderBy('created_at', 'desc');
 
     return response.json(todos);
   } catch (error) {
