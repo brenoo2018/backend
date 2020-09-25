@@ -25,7 +25,10 @@ Este serviço de API foi desenvolvida com a finalidade de resolver o desafio pro
 - Dentro da pasta, execute: `> yarn`
 - Em seguida, execute: `> yarn knex:migrate` - para criar as tabelas
 - Execute: `> yarn knex:seed` - caso queira que um usuário padrão seja adicionado
+- Usuário padrão: `username: usuarioteste, email: usuarioteste@gmail.com, password: 123456 `
 - Por fim: `> yarn dev:server` - para o servidor inicializar
+
+- Obs: Importe o arquivo `Insomnia_2020-09-24.json` em algum client api de sua peferência para testar as rotas
 
 ## Rotas
 
