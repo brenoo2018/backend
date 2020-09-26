@@ -31,9 +31,9 @@ export async function create(request: Request, response: Response) {
 
     const todos = await knex('todos')
       .select(['uuid', 'task', 'user_uuid', 'created_at'])
+      .first()
       .where({ user_uuid: user_uuid })
       .orderBy('created_at', 'desc');
-
 
     return response.json(todos);
   } catch (error) {
