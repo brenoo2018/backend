@@ -36,8 +36,8 @@ Este serviço de API foi desenvolvida com a finalidade de resolver o desafio pro
 
 | Requisição | Rota            | Corpo                        | Parâmetro                    | Resposta | Descrição                                      |
 | ---------- | --------------- | ---------------------------- | ---------------------------- | -------- | ---------------------------------------------- |
-| POST       | `/users/create` | username email password      | <div align="center">❌</div> | `object` | Rota de criação de usuário                     |
-| POST       | `/sessions`     | email password               | <div align="center">❌</div> | `object` | Rota de login do usuário                       |
-| POST       | `/todos/create` | task                         | <div align="center">❌</div> | `array`  | Rota de criação de tarefas do usuário logado   |
+| POST       | `/users/create` | username, email, password      | <div align="center">❌</div> | `object` | Rota de criação de usuário                     |
+| POST       | `/sessions`     | email, password               | <div align="center">❌</div> | `object` | Rota de login do usuário                       |
+| POST       | `/todos/create` | task                         | <div align="center">❌</div> | `object`  | Rota de criação de tarefas do usuário logado   |
 | GET        | `/todos`        | <div align="center">❌</div> | <div align="center">❌</div> | `array`  | Rota de listagem das tarefas do usuário logado |
 | DELETE     | `/todos/delete` | <div align="center">❌</div> | `:uuid`                      | `object` | Rota que deleta a tarefa do usuário logado     |
